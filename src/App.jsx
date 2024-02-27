@@ -71,7 +71,7 @@ function App() {
         </Button>
       </div>
 
-      <div className="w-44 h-44 bg-transparent top-50 rounded-md overflow-hidden border-[0.08rem]">
+      <div className="w-44 h-44 top-50 rounded-md overflow-hidden border-[0.08rem] backdrop-blur">
         <img src={qrImageUrl} alt="" className="w-full" />
       </div>
 
