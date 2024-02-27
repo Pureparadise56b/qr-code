@@ -85,7 +85,7 @@ function App() {
 
       <Alert
         id="alert"
-        className="w-72 absolute -bottom-20 shadow-xl bg-yellow-300 border-none"
+        className="w-72 absolute -bottom-50 shadow-xl bg-yellow-300 border-none"
       >
         <IoIosWarning className="text-xl" />
         <AlertTitle>Input field is empty!</AlertTitle>
