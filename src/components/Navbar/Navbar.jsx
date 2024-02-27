@@ -27,11 +27,11 @@ function Navbar() {
   }
 
   return (
-    <div className="w-full sm:py-1 py-10 sm:px-16 px-7 bg-transparent text-white flex items-center justify-between border-b-[1px] border-gray-500 fixed z-50 font-['Gilroy']">
+    <div className="w-full sm:py-1 py-10 sm:px-16 px-7 bg-transparent text-white flex items-center justify-between border-b-[1px] border-gray-500 fixed z-50 font-['gilroy']">
       <h1 className="text-3xl font-bold text-teal-500 tracking-wide">
         PlayLand
       </h1>
-      <div className="h-16 items-end gap-9 font-['Gilroy'] font-light hidden sm:flex">
+      <div className="h-16 items-end gap-9 font-light hidden sm:flex">
         {lists.map((list, index) => (
           <a
             key={index}

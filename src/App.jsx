@@ -50,7 +50,7 @@ function App() {
 
   return (
     <div className="w-full min-h-screen bg-[url('https://images.unsplash.com/photo-1460355976672-71c3f0a4bdac?q=80&w=1769&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-no-repeat bg-center flex items-center justify-start relative flex-col gap-10 overflow-hidden">
-      <div className="absolute text-white sm:top-24 text-2xl left-10 font-['Gilroy'] tracking-wide top-32">
+      <div className="absolute text-white sm:top-24 text-2xl left-10 font-['gilroy'] tracking-wide top-32">
         <h1 className="border-b-[1px] border-zinc-600">Generate and Share</h1>
         <h1 className="ml-10 border-b-[1px] border-zinc-600">
           <span className="text-teal-400">QR Codes</span> Instantly
