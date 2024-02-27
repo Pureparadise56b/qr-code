@@ -1,0 +1,98 @@
+import React, { useState } from 'react'
+import QRCode from 'qrcode'
+import { Button } from './components/ui/button'
+import { Input } from './components/ui/input'
+import { Alert, AlertDescription, AlertTitle } from './components/ui/alert'
+import { IoIosWarning } from 'react-icons/io'
+import gsap from 'gsap'
+
+function App() {
+  const [qrData, setQrData] = useState('')
+  const [qrImageUrl, setQrImageUrl] = useState('')
+
+  const generateQRCode = async () => {
+    if (!qrData) {
+      const alert = document.getElementById('alert')
+      document.querySelector('img').src = ''
+      setQrImageUrl('')
+      gsap.to(alert, {
+        bottom: '5%',
+        duration: 0.5,
+        ease: 'power3.out',
+      })
+
+      gsap.to(alert, {
+        delay: 4,
+        bottom: '-20%',
+        duration: 0.5,
+        ease: 'power3.out',
+      })
+      return
+    }
+    try {
+      const qrCodeOptions = {
+        errorCorrectionLevel: 'H',
+        margin: 2,
+        scale: 7,
+        color: {
+          dark: '#000000FF',
+          light: '#FFFFFFFF',
+        },
+        type: 'image/png',
+        quality: 0.8,
+      }
+      const imageUrl = await QRCode.toDataURL(qrData, qrCodeOptions)
+      setQrImageUrl(imageUrl)
+    } catch (error) {
+      console.error('Error generating QR code:', error)
+    }
+  }
+
+  return (
+    <div className="w-full min-h-screen bg-zinc-800 flex items-center justify-start relative flex-col gap-10 overflow-hidden">
+      <div className="absolute text-white sm:top-24 text-2xl left-10 font-['Gilroy'] tracking-wide top-32">
+        <h1 className="border-b-[1px] border-zinc-600">Generate and Share</h1>
+        <h1 className="ml-10 border-b-[1px] border-zinc-600">
+          <span className="text-teal-400">QR Codes</span> Instantly
+        </h1>
+      </div>
+
+      <div className="p-5 sm:gap-5 flex sm:pt-44 pt-56 flex-col sm:flex-row items-center px-10 gap-10">
+        <Input
+          type="text"
+          placeholder="Enter your url"
+          className="w-80"
+          onChange={(e) => {
+            setQrData(e.target.value)
+          }}
+        />
+        <Button onClick={generateQRCode} variant="secondary">
+          Generate
+        </Button>
+      </div>
+
+      <div className="w-44 h-44 bg-zinc-500 top-50 rounded-md overflow-hidden">
+        <img src={qrImageUrl} alt="" className="w-full" />
+      </div>
+
+      <div>
+        {qrImageUrl && (
+          <a href={qrImageUrl} download={`${qrData}.png`}>
+            <Button variant="outline">Download</Button>
+          </a>
+        )}
+      </div>
+
+      <Alert
+        id="alert"
+        className="w-72 absolute -bottom-20 shadow-xl bg-yellow-300 border-none"
+      >
+        <IoIosWarning className="text-xl" />
+        <AlertTitle>Input field is empty!</AlertTitle>
+        <AlertDescription>Please provide a string for QR Code</AlertDescription>
+      </Alert>
+    </div>
+  )
+}
+
+export default App
